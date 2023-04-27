@@ -6,3 +6,7 @@ the security bootstrapper extend the base commands provided by the edgex securit
 inorder to do so first execute 
 
 ``` sudo docker ps ```
+
+this should give you the id of the container and then run the commands for the bootstrapper as shown below 
+
+``` sudo docker exec -it <ContainerID> ./security-bootstrapper help ``` 
