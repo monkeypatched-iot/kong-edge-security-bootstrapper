@@ -37,8 +37,8 @@ LABEL license='SPDX-License-Identifier: Apache-2.0' \
 
 RUN apk add --update --no-cache dumb-init su-exec
 
-ENV SECURITY_INIT_DIR /edgex-init
-ENV SECURITY_INIT_STAGING /edgex-init-staging
+ENV SECURITY_INIT_STAGING /edgex-init
+ #ENV SECURITY_INIT_DIR /edgex-init
 ARG BOOTSTRAP_REDIS_DIR=${SECURITY_INIT_STAGING}/bootstrap-redis
 ARG BOOTSTRAP_MOSQUITTO_DIR=${SECURITY_INIT_STAGING}/bootstrap-mosquitto
 
@@ -47,7 +47,7 @@ RUN mkdir -p ${BOOTSTRAP_REDIS_DIR} ${BOOTSTRAP_MOSQUITTO_DIR}
 WORKDIR ${SECURITY_INIT_STAGING}
 
 # copy all entrypoint scripts into shared folder
-COPY --from=builder /edgex-go/cmd/security-bootstrapper/entrypoint-scripts/ ${SECURITY_INIT_STAGING}/
+COPY --from=builder /edgex-go/cmd/security-bootstrapper/entrypoint-scripts/  ${SECURITY_INIT_STAGING}/
 RUN chmod +x ${SECURITY_INIT_STAGING}/*.sh
 
 COPY --from=builder /edgex-go/cmd/security-bootstrapper/security-bootstrapper .
