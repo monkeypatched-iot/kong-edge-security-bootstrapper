@@ -70,4 +70,4 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # gate is one subcommand for security-bootstrapper to do security bootstrapping
-CMD ["gate"]
+CMD ["/bin/sh", "-c", "./security-bootstrapper","gate"]
