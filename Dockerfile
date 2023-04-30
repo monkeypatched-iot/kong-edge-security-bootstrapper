@@ -48,7 +48,7 @@ WORKDIR ${SECURITY_INIT_STAGING}
 
 # copy all entrypoint scripts into shared folder
 COPY --from=builder /edgex-go/cmd/security-bootstrapper/entrypoint-scripts/  ${SECURITY_INIT_STAGING}/
-RUN chmod +x ${SECURITY_INIT_STAGING}
+RUN chmod +x ./
 RUN chmod +x ${SECURITY_INIT_STAGING}/*.sh
 
 COPY --from=builder /edgex-go/cmd/security-bootstrapper/security-bootstrapper .
